@@ -9,27 +9,25 @@ public class OrdernarArray {
         
         
         System.out.println(Arrays.toString(resultado));
-        // teste= filtrarArray(teste, 2);
+        // teste= filtrarArray(teste, 3);
         // System.out.println(Arrays.toString(teste));
 
     }
     public static int[] ordernarArray(int[] array){
-        int [] arrayOrdenado= array;
+        int [] arrayOrdenado= Arrays.copyOf(array, array.length);
 
-
-            for(int i=0; i<arrayOrdenado.length; i++){
-
-                for(int j=0; j<array.length;j++){
-
-                    if(array[j]<arrayOrdenado[i]){
-                        arrayOrdenado[i]=array[j];
-                        array=filtrarArray(array, j);
-                        // System.out.println(Arrays.toString(array));
-                    }
+        for(int i=0;i<arrayOrdenado.length; i++){
+            int minIndex=i;
+            for(int j=i+1; j<arrayOrdenado.length;j++){
+                if(arrayOrdenado[j] < arrayOrdenado[minIndex]){
+                    minIndex=j;
                 }
             }
-            // System.err.println(i);
-
+            // troca os elementos
+            int temp =  arrayOrdenado[i];
+            arrayOrdenado[i]=arrayOrdenado[minIndex];
+            arrayOrdenado[minIndex]= temp;
+        }
         return arrayOrdenado;
     }
     
